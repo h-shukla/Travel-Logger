@@ -1,9 +1,9 @@
 const express = require("express");
 const {
-  getLog,
-  createLog,
-  updateLog,
-  deleteLog,
+    getLog,
+    createLog,
+    updateLog,
+    deleteLog,
 } = require("../controllers/logsController");
 
 const router = express.Router();

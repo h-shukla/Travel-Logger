@@ -16,8 +16,11 @@
 - [x] Make error handling middlewares
 - [x] Make logs api
 - [x] Make users api
-- [ ] Connect user routes to database
-- [ ] Connect logs routes to database
+- [x] Create roles and seperate admin routes
 - [ ] Add encryption to user passwords
+- [ ] Add role based authentitcation with tokens using jwt token
+- [ ] Connect user routes to database
+- [ ] Refine error handling middlewares
+- [ ] Connect logs routes to database
 
 # Frontend

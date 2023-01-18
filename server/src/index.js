@@ -1,5 +1,6 @@
 const dotenv = require("dotenv");
 const express = require("express");
+const cors = require("cors");
 const connectToDB = require("./db");
 const error = require("./middlewares/error");
 
@@ -11,13 +12,17 @@ const app = express();
 const port = process.env.PORT || 5000;
 connectToDB();
 
+// middlewares
+app.use(express.json());
+app.use(cors());
+
 // routes
-app.use("/api/v1/user", require("./routes/user"));
-app.use("/api/v1/logs", require("./routes/logs"));
+app.use("/api/v1/user", require("./routes/userRoutes"));
+app.use("/api/v1/logs", require("./routes/logsRoutes"));
 
 // middleware for error
 app.use(error);
 
 app.listen(port, () => {
-  console.log(`Backend listening on port ${port}`);
+    console.log(`Backend listening on port ${port}`);
 });
