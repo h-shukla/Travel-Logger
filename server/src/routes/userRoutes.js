@@ -1,7 +1,7 @@
 const express = require("express");
 const {
     getUsers,
-    createUser,
+    register,
     updateUser,
     deleteUser,
     loginUser,
@@ -14,7 +14,7 @@ router.get("/users", getUsers);
 
 // normal routes
 router.post("/login", loginUser);
-router.post("/register", createUser);
+router.post("/register", register);
 router.put("/:id", updateUser);
 router.delete("/:id", deleteUser);
 

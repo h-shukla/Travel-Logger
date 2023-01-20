@@ -1,15 +1,28 @@
+const jwt = require('jsonwebtoken');
 const catchAsyncErrors = require("../middlewares/catchAsyncErrors");
 const Users = require("../models/Users");
 
-const createUser = catchAsyncErrors(async (req, res, next) => {
-    const { name, username, email, password, confirmPassword } = req.body;
-    if (password === confirmPassword) {
+const getToken = (password) => {
+    const key = process.env.PRIVATE_KEY_JWT;
+    const token = jwt.sign(password, key);
+    return token;
+};
+
+const register = catchAsyncErrors(async (req, res, next) => {
+    // TODO: add jwt encryption and send tokens to authenticate admin routes
+    const userFromReq = req.body;
+    if (userFromReq.password === userFromReq.confirmPassword) {
+        const signedPass = getToken(userFromReq.password);
+
+        const originalString = jwt.verify(signedPass, process.env.PRIVATE_KEY_JWT);
+        console.log(originalString);
+
         const user = await Users.create({
-            name,
-            username,
-            email,
-            password,
-            confirmPassword,
+            name: userFromReq.name,
+            username: userFromReq.username,
+            email: userFromReq.email,
+            password: signedPass,
+            role: userFromReq.role
         });
 
         res.status(200).json({
@@ -80,7 +93,7 @@ const deleteUser = catchAsyncErrors(async (req, res, next) => {
 
 module.exports = {
     getUsers,
-    createUser,
+    register,
     updateUser,
     deleteUser,
     loginUser,
