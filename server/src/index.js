@@ -26,5 +26,5 @@ app.use("/api/v1/logs", require("./routes/logsRoutes"));
 app.use(error);
 
 app.listen(port, () => {
-  console.log(`Backend listening on port ${port}`);
+    console.log(`Backend listening on port ${port}`);
 });
