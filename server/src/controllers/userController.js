@@ -4,17 +4,18 @@ const Users = require("../models/Users");
 const key = process.env.PRIVATE_KEY_JWT;
 
 // generate token for passwords
-const getToken = (password) => {
-    const token = jwt.sign(password, key);
+const getToken = (value) => {
+    const token = jwt.sign(value, key);
     return token;
 };
 
 // Verify the given token
-const verifyToken = (token) => {
-    const decodedString = jwt.verify(token, key);
+const verifyToken = (value) => {
+    const decodedString = jwt.verify(value, key);
     return decodedString;
 };
 
+// register new user
 const register = catchAsyncErrors(async (req, res, next) => {
     const userFromReq = req.body;
     if (userFromReq.password === userFromReq.confirmPassword) {
@@ -50,6 +51,7 @@ const register = catchAsyncErrors(async (req, res, next) => {
     }
 });
 
+// login existing users
 const loginUser = catchAsyncErrors(async (req, res, next) => {
     const { email, password } = req.body;
     const user = await Users.findOne({ email });
@@ -83,11 +85,12 @@ const loginUser = catchAsyncErrors(async (req, res, next) => {
     }
 });
 
+// logout logged in users
 const logoutUser = (req, res, next) => {
     res.status(200).clearCookie("token").json({});
-}
+};
 
-
+// get users --> Admin routes
 const getUsers = catchAsyncErrors(async (req, res, next) => {
     const id = req.cookies.token;
     if (id) {
@@ -113,29 +116,48 @@ const getUsers = catchAsyncErrors(async (req, res, next) => {
     }
 });
 
+// update existing users
 const updateUser = catchAsyncErrors(async (req, res, next) => {
-    const user = req.body;
-    console.log(user);
-    res.status(200).json({
-        success: true,
-        message: "update route reached",
-    });
+    const { name, email, username, password } = req.body;
+    const user = await Users.findOne({ email });
+    if (verifyToken(user.password) === password) {
+        const signedPass = getToken(password);
+        console.log(signedPass);
+        console.log(password);
+        // use updateOne instead of udpate
+        // update is depricated
+        await user.updateOne({ name, email, username, signedPass });
+        res.status(200).json({
+            success: true,
+            message: "User Updated",
+        });
+    } else {
+        res.status(200).json({
+            success: true,
+            message: "Passwords do not match",
+        });
+    }
 });
 
+// delete existing user
 const deleteUser = catchAsyncErrors(async (req, res, next) => {
-    res.status(200).json({
-        success: true,
-        message: "delete route reached",
-    });
+    const { email, password } = req.body;
+    const user = await Users.findOne({ email });
+    if (verifyToken(user.password) === password) {
+        // use deleteOne() instead of delete()
+        // delete() is depricated
+        await user.deleteOne();
+        res.status(200).json({
+            success: true,
+            message: "User deleted",
+        });
+    } else {
+        res.status(200).json({
+            success: true,
+            message: "Passwords do not match",
+        });
+    }
 });
-
-const u = async (req, res, next) => {
-    const id = req.cookies.token;
-    console.log(id);
-    const vId = verifyToken(id);
-    const user = await Users.findById(JSON.parse(vId));
-    res.send(user);
-}
 
 module.exports = {
     getUsers,
@@ -144,5 +166,5 @@ module.exports = {
     deleteUser,
     loginUser,
     logoutUser,
-    u
 };
+
