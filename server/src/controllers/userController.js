@@ -26,7 +26,9 @@ const register = catchAsyncErrors(async (req, res, next) => {
         delete userFromReq["confirmPassword"];
         const user = await Users.create(userFromReq);
 
-        const token = getToken(user.role);
+        // for setting tokens with cookies
+        const token = getToken(JSON.stringify(user._id));
+
         res.status(200).cookie('token', token, {
             maxAge: 900000,
             httpOnly: true 
@@ -49,14 +51,12 @@ const register = catchAsyncErrors(async (req, res, next) => {
 });
 
 const loginUser = catchAsyncErrors(async (req, res, next) => {
-    // TODO: send tokens to authenticate admin routes
     const { email, password } = req.body;
     const user = await Users.findOne({ email });
-
     const decodedPass = verifyToken(user.password);
-    const token = getToken(user.role);
 
-    const vToken = verifyToken(token);
+    // for setting tokens with cookies
+    const token = getToken(JSON.stringify(user._id));
     if (user) {
         if (decodedPass === password) {
             res.status(200).cookie('token', token, {
@@ -84,32 +84,58 @@ const loginUser = catchAsyncErrors(async (req, res, next) => {
 });
 
 const logoutUser = (req, res, next) => {
-    console.log(req.cookies);
     res.status(200).clearCookie("token").json({});
 }
 
 
 const getUsers = catchAsyncErrors(async (req, res, next) => {
-    const users = await Users.find();
-    res.status(200).json({
-        success: true,
-        users: users,
-    });
+    const id = req.cookies.token;
+    if (id) {
+        const vId = verifyToken(id);
+        const user = await Users.findById(JSON.parse(vId));
+        if (user.role === "admin") {
+            const users = await Users.find();
+            res.status(200).json({
+                success: true,
+                message: users,
+            });
+        } else {
+            res.status(404).json({
+                success: false,
+                message: "You are not authorized to access this url",
+            });
+        }
+    } else {
+        res.status(404).json({
+            success: false,
+            message: "Please log in first",
+        });
+    }
 });
 
 const updateUser = catchAsyncErrors(async (req, res, next) => {
+    const user = req.body;
+    console.log(user);
     res.status(200).json({
         success: true,
-        message: "update route",
+        message: "update route reached",
     });
 });
 
 const deleteUser = catchAsyncErrors(async (req, res, next) => {
     res.status(200).json({
         success: true,
-        message: "delete route",
+        message: "delete route reached",
     });
 });
+
+const u = async (req, res, next) => {
+    const id = req.cookies.token;
+    console.log(id);
+    const vId = verifyToken(id);
+    const user = await Users.findById(JSON.parse(vId));
+    res.send(user);
+}
 
 module.exports = {
     getUsers,
@@ -117,5 +143,6 @@ module.exports = {
     updateUser,
     deleteUser,
     loginUser,
-    logoutUser
+    logoutUser,
+    u
 };

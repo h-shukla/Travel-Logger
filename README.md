@@ -20,8 +20,9 @@
 - [x] Add encryption to user passwords
 - [x] Learn how to send cookies to frontend and store them
 - [x] Send cookies to frontend while register and login
-    (cookie is set using role i.e. admin for admin aud user for everyone else)
+    (mongoose id is used for cookie)
 - [x] Add role based authentitcation
+- [x] Complete admin route to access all users
 - [ ] Finish all user routes
 - [ ] Finish all logs routes
 - [ ] Refactor code to the best of ability
