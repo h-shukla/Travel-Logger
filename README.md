@@ -18,9 +18,12 @@
 - [x] Make users api
 - [x] Create roles and seperate admin routes
 - [x] Add encryption to user passwords
-- [ ] Add role based authentitcation with tokens using jwt token
-- [ ] Connect user routes to database
-- [ ] Connect logs routes to database
-- [ ] Refactor code to be readable
+- [x] Learn how to send cookies to frontend and store them
+- [x] Send cookies to frontend while register and login
+    (cookie is set using role i.e. admin for admin aud user for everyone else)
+- [x] Add role based authentitcation
+- [ ] Finish all user routes
+- [ ] Finish all logs routes
+- [ ] Refactor code to the best of ability
 
 # Frontend

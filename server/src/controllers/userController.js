@@ -21,12 +21,16 @@ const register = catchAsyncErrors(async (req, res, next) => {
         // getting a token for passsword
         const signedPass = getToken(userFromReq.password);
 
-        // changing some values so it can be passed on to the create function
+        // changing values for sending to client
         userFromReq.password = signedPass;
         delete userFromReq["confirmPassword"];
         const user = await Users.create(userFromReq);
 
-        res.status(200).json({
+        const token = getToken(user.role);
+        res.status(200).cookie('token', token, {
+            maxAge: 900000,
+            httpOnly: true 
+        }).json({
             success: true,
             message: "User Created",
             userDetails: {
@@ -50,9 +54,15 @@ const loginUser = catchAsyncErrors(async (req, res, next) => {
     const user = await Users.findOne({ email });
 
     const decodedPass = verifyToken(user.password);
+    const token = getToken(user.role);
+
+    const vToken = verifyToken(token);
     if (user) {
         if (decodedPass === password) {
-            res.status(200).json({
+            res.status(200).cookie('token', token, {
+                maxAge: 900000,
+                httpOnly: true 
+            }).json({
                 success: true,
                 message: "user found",
                 userDetails: user,
@@ -67,11 +77,17 @@ const loginUser = catchAsyncErrors(async (req, res, next) => {
     } else {
         res.status(400).json({
             success: false,
-            message: "no user found",
+            message: "no user found or passwords do not match",
             userDetails: "",
         });
     }
 });
+
+const logoutUser = (req, res, next) => {
+    console.log(req.cookies);
+    res.status(200).clearCookie("token").json({});
+}
+
 
 const getUsers = catchAsyncErrors(async (req, res, next) => {
     const users = await Users.find();
@@ -101,4 +117,5 @@ module.exports = {
     updateUser,
     deleteUser,
     loginUser,
+    logoutUser
 };
