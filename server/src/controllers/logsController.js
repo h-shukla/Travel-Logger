@@ -15,7 +15,6 @@ const getLogs = catchAsyncErrors(async (req, res, next) => {
 const getLogsForCurrentUser = catchAsyncErrors(async (req, res, next) => {
     const userId = verifyToken(req.cookies.token);
     const logs = await Logs.find({ user: rmvDoubleQuotes(userId) });
-    console.log(logs);
     res.status(200).json({
         success: true,
         message: "get log for user reached",
