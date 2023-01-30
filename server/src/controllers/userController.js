@@ -1,19 +1,6 @@
-const jwt = require("jsonwebtoken");
 const catchAsyncErrors = require("../middlewares/catchAsyncErrors");
 const Users = require("../models/Users");
-const key = process.env.PRIVATE_KEY_JWT;
-
-// generate token for passwords
-const getToken = (value) => {
-    const token = jwt.sign(value, key);
-    return token;
-};
-
-// Verify the given token
-const verifyToken = (value) => {
-    const decodedString = jwt.verify(value, key);
-    return decodedString;
-};
+const { getToken, verifyToken } = require('../utils/tokenFunctions');
 
 // register new user
 const register = catchAsyncErrors(async (req, res, next) => {
@@ -32,7 +19,7 @@ const register = catchAsyncErrors(async (req, res, next) => {
 
         res.status(200).cookie('token', token, {
             maxAge: 900000,
-            httpOnly: true 
+            httpOnly: true
         }).json({
             success: true,
             message: "User Created",
@@ -60,14 +47,21 @@ const loginUser = catchAsyncErrors(async (req, res, next) => {
     // for setting tokens with cookies
     const token = getToken(JSON.stringify(user._id));
     if (user) {
+        userDetails = {
+            _id: user._id,
+            name: user.name,
+            username: user.username,
+            email: user.email,
+            role: user.role
+        };
         if (decodedPass === password) {
             res.status(200).cookie('token', token, {
                 maxAge: 900000,
-                httpOnly: true 
+                httpOnly: true
             }).json({
                 success: true,
                 message: "user found",
-                userDetails: user,
+                userDetails: userDetails
             });
         } else {
             res.status(400).json({

@@ -1,6 +1,6 @@
 # Travel logger
 
-- Integration with openstreetmap api
+- Integration with openstreetmap api (google maps api requires card)
 - Click to select place or search with search bar
 - Add personalized comments/reviews
 - Add community review or read what others have to say
@@ -28,3 +28,4 @@
 - [ ] Refactor code to the best of ability
 
 # Frontend
+- [ ] Render a basic map with react-leflet and openstreetmap api
