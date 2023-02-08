@@ -56,32 +56,20 @@ const createLog = catchAsyncErrors(async (req, res, next) => {
 });
 
 const updateLog = catchAsyncErrors(async (req, res, next) => {
-    // TODO: check data getting from frontend
-    const newData = req.body;
-    if (newData !== null) {
-        const id = req.params.id;
-        const userId = verifyToken(req.cookies.token);
-        const currentLog = await Logs.findOneAndUpdate(
-            { _id: id, user: rmvDoubleQuotes(userId) },
-            { newData }
-        );
-        if (currentLog != null) {
-            res.status(200).json({
-                success: true,
-                message: "update log reached",
-                log: currentLog
-            });
-        } else {
-            res.status(400).json({
-                success: false,
-                message: "Some internal error occured"
-            });
-        }
+    // check if the req body is empty
+    if (req.body !== undefined) {
+        await Logs.findByIdAndUpdate(req.params.id, req.body);
+        const newLog = await Logs.findById(req.params.id);
+        res.status(200).json({
+            success: true,
+            message: "log updated",
+            log: newLog
+        })
     } else {
         res.status(400).json({
             success: false,
             message: "No data provided in the body"
-        })
+        });
     }
 });
 
