@@ -24,7 +24,7 @@
 - [x] Add role based authentitcation
 - [x] Complete admin route to access all users
 - [x] Finish all user routes
-- [ ] Finish all logs routes
+- [x] Finish all logs routes
 - [ ] Refactor code to the best of ability
 
 # Frontend
