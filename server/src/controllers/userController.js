@@ -4,15 +4,15 @@ const { getToken, verifyToken } = require('../utils/tokenFunctions');
 
 // register new user
 const register = catchAsyncErrors(async (req, res, next) => {
-    const userFromReq = req.body;
-    if (userFromReq.password === userFromReq.confirmPassword) {
-        // getting a token for passsword
-        const signedPass = getToken(userFromReq.password);
+    const usr = req.body;
+    if (usr.password === usr.confirmPassword) {
+        // encrypting password
+        const signedPass = getToken(usr.password);
 
-        // changing values for sending to client
-        userFromReq.password = signedPass;
-        delete userFromReq["confirmPassword"];
-        const user = await Users.create(userFromReq);
+        // removing password field as we need to send it to client
+        usr.password = signedPass;
+        delete usr["confirmPassword"];
+        const user = await Users.create(usr);
 
         // for setting tokens with cookies
         const token = getToken(JSON.stringify(user._id));
@@ -41,12 +41,13 @@ const register = catchAsyncErrors(async (req, res, next) => {
 // login existing users
 const loginUser = catchAsyncErrors(async (req, res, next) => {
     const { email, password } = req.body;
-    const user = await Users.findOne({ email });
-    const decodedPass = verifyToken(user.password);
+    let user = await Users.findOne({ email });
 
-    // for setting tokens with cookies
-    const token = getToken(JSON.stringify(user._id));
     if (user) {
+        // for setting tokens with cookies
+        const token = getToken(JSON.stringify(user._id));
+        const decodedPass = verifyToken(user.password);
+
         userDetails = {
             _id: user._id,
             name: user.name,
@@ -54,6 +55,7 @@ const loginUser = catchAsyncErrors(async (req, res, next) => {
             email: user.email,
             role: user.role
         };
+
         if (decodedPass === password) {
             res.status(200).cookie('token', token, {
                 maxAge: 900000,
@@ -67,7 +69,6 @@ const loginUser = catchAsyncErrors(async (req, res, next) => {
             res.status(400).json({
                 success: true,
                 message: "no user found or passwords do not match",
-                userDetails: "",
             });
         }
     } else {
@@ -79,8 +80,8 @@ const loginUser = catchAsyncErrors(async (req, res, next) => {
     }
 });
 
-// logout logged in users
 const logoutUser = (req, res, next) => {
+    // clear the cookie that stores in logged in user information
     res.status(200).clearCookie("token").json({});
 };
 

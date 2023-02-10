@@ -56,7 +56,7 @@ const createLog = catchAsyncErrors(async (req, res, next) => {
 });
 
 const updateLog = catchAsyncErrors(async (req, res, next) => {
-    // check if the req body is empty
+    // checking if the req body is empty
     if (req.body !== undefined) {
         await Logs.findByIdAndUpdate(req.params.id, req.body);
         const newLog = await Logs.findById(req.params.id);
