@@ -20,7 +20,7 @@
 - [x] Add encryption to user passwords
 - [x] Learn how to send cookies to frontend and store them
 - [x] Send cookies to frontend while register and login
-    (mongoose id is used for cookie)
+      (mongoose id is used as a cookie for storing user login details)
 - [x] Add role based authentitcation
 - [x] Complete admin route to access all users
 - [x] Finish all user routes
@@ -28,4 +28,4 @@
 - [ ] Refactor code to the best of ability
 
 # Frontend
-- [ ] Render a basic map with react-leflet and openstreetmap api
+- [ ] Render a basic map with react-leaflet and openstreetmap api
