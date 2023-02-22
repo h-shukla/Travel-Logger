@@ -29,3 +29,5 @@
 
 # Frontend
 - [ ] Render a basic map with react-leaflet and openstreetmap api
+      The map is not rendering properly with the code given in the documentation
+      Go and find some vids or something to reference
