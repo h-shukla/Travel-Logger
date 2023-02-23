@@ -1,15 +1,12 @@
 # Travel logger
-
-- Integration with openstreetmap api (google maps api requires card)
-- Click to select place or search with search bar
-- Add personalized comments/reviews
-- Add community review or read what others have to say
-- Personal travel journal with community feature
+- Make list of your visited places and add it's comments
+- Look at what others have posted about that place as well
+- Have ability to either publish your travel log to everyone or keep it just for
+  yourself as well
+- Dark mode & Light mode switch (very important)
 
 # TODO
-
-# Backend
-
+## Backend
 - [x] Make logs model
 - [x] Make users model
 - [x] Link users model with logs model
@@ -25,9 +22,10 @@
 - [x] Complete admin route to access all users
 - [x] Finish all user routes
 - [x] Finish all logs routes
-- [ ] Refactor code to the best of ability
+- [x] Refactor code
+- [ ] Document with comments
 
-# Frontend
-- [ ] Render a basic map with react-leaflet and openstreetmap api
-      The map is not rendering properly with the code given in the documentation
-      Go and find some vids or something to reference
+## Frontend
+Api is not accessible so have to scrape from google maps. Instead of having
+whole window as map, Will have to put todo list like structure with place's
+google map clickable link. Just have to provide the right co-ordinates for it.
