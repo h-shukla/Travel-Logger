@@ -24,6 +24,7 @@ const logSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "user",
     },
+    urlToImage: requiredString
 });
 
 const Log = mongoose.model("log", logSchema);
