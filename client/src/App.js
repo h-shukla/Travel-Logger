@@ -4,10 +4,11 @@ import Navbar from './components/Navbar';
 import Landing from './components/Landing';
 import Home from './components/Home';
 import Login from './components/Login';
-import Register from './components/Register';
+import Signup from './components/Signup';
 import Communities from './components/Communities';
 import About from './components/About';
 import Contact from './components/Contact';
+import Profile from './components/Profile';
 
 function App() {
     return (
@@ -19,7 +20,8 @@ function App() {
                         <Route index element={<Landing />} />
                         <Route path="/home" element={<Home />} />
                         <Route path="/login" element={<Login />} />
-                        <Route path="/register" element={<Register />} />
+                        <Route path="/signup" element={<Signup />} />
+                        <Route path="/profile" element={<Profile />} />
                         <Route path="/communities" element={<Communities />} />
                         <Route path="/about" element={<About />} />
                         <Route path="/contact" element={<Contact />} />
