@@ -21,6 +21,7 @@ app.use(cookieParser());
 // routes
 app.use("/api/v1/user", require("./routes/userRoutes"));
 app.use("/api/v1/logs", require("./routes/logsRoutes"));
+app.use("/api/v1/community", require("./routes/communityRoutes.js"));
 
 // middleware for error
 app.use(error);

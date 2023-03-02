@@ -21,6 +21,10 @@ const userSchema = new Schema({
         type: String,
         default: "user",
     },
+    communities: [{
+        type: Schema.Types.ObjectId,
+        ref: "community"
+    }],
 });
 
 const User = mongoose.model("user", userSchema);

@@ -24,10 +24,15 @@
 - [x] Finish all logs routes
 - [x] Refactor code
 - [ ] Add community feature
-  - [ ] Community model
-  - [ ] Add users to community array so we know which communities they have joined
-  - [ ] Allow forum like discussions to occur within those communities.
-        (LIKE Y.T. Comment section)
+  - [x] Community model
+  - [x] Add communities array to user model
+  - [x] Users will be able to add comments within a community
+  - [x] Setup community routes and controllers
+  - [ ] Add CRUD functionality to the controllers
+  - [ ] Add authorization to the CRUD controllers so unauthorized users can't
+        access it
+  - [ ] Add user route to push a community to communities arrray if the user has
+        joined any community without changing rest of the user data
 
 ## Frontend
 Api is not accessible so have to scrape from google maps. Instead of having
@@ -44,7 +49,8 @@ google map clickable link. Just have to provide the right co-ordinates for it.
 - [ ] Make the basic about and contact pages
 - [ ] Implement the signup feature
 - [ ] Implement the login feature
-- [ ] Make login and signup button dissappear after user has logged in or signed up
+- [ ] Make login and signup button dissappear after user has logged in or signed
+      up
 - [ ] Make the profile button dissappear if the user is not logged in
 - [ ] Check for cookies being stored on the frontend
-- [ ] Add sure to have a profile icon in the navbar so you can quickly sign out if needed
+- [ ] Add profile icon in the navbar to sign out
