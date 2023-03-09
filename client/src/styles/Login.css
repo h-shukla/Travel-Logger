@@ -20,6 +20,10 @@
     border-radius: 1em;
 }
 
+.signup-form>h2 {
+    color: #131313;
+}
+
 .form-label {
     margin-right: 1em;
     color: #131313;

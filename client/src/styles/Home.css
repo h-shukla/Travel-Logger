@@ -1,0 +1,54 @@
+.home-container {
+  min-height: 100vh;
+}
+
+.new-log-container {
+  padding-top: 3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.new-log {
+  display: flex;
+  flex-direction: column;
+  background-color: aliceblue;
+  color: #131313;
+  min-width: 30vw;
+  padding: 1em;
+  border-radius: 1em;
+}
+
+.m-2 {
+  margin: .5em;
+}
+
+.m-2>label {
+  margin-right: 1.5em;
+}
+
+.form-control {
+  padding: .5em;
+  border-radius: .5em;
+  color: aliceblue;
+  background-color: #383838;
+}
+
+.previous-logs {
+  margin-top: 2em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.logs {
+  background-color: aliceblue;
+  color: #131313;
+  margin: 1em;
+  padding: 1em;
+  border-radius: 1em;
+  max-width: 30vw;
+  word-wrap: normal;
+}

@@ -27,7 +27,7 @@ h3 {
     margin-bottom: 2rem;
 }
 
-.container {
+.landing>.container {
     background-color: rgba(20, 20, 20, 0.4);
     padding: 2rem;
 }

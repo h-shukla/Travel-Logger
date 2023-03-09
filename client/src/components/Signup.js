@@ -40,6 +40,7 @@ const Signup = () => {
   return (
     <div className='div-above'>
       <form className='signup-form' onSubmit={handleOnSubmit}>
+        <h2>Signup</h2>
         <div className="mb-3">
           <label htmlFor="nameInput" className="form-label">Enter your name:</label>
           <input ref={nameRef} type="text" onChange={handleOnchange} name='' className="form-control" id="nameID" placeholder='Minimum 4 characters' required />
