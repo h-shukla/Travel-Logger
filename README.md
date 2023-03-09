@@ -43,11 +43,11 @@ google map clickable link. Just have to provide the right co-ordinates for it.
 - [x] React router setup
 - [x] Make navbar functional
 - [x] Design the landing page
-- [ ] Design the signup component
-- [ ] Design the login component
+- [x] Design the signup component
+- [x] Design the login component
+- [ ] Make the basic about and contact pages
 - [ ] Design the Home component
 - [ ] Design the Communities component
-- [ ] Make the basic about and contact pages
 - [ ] Implement the signup feature
 - [ ] Implement the login feature
 - [ ] Make login and signup button dissappear after user has logged in or signed
@@ -55,3 +55,4 @@ google map clickable link. Just have to provide the right co-ordinates for it.
 - [ ] Make the profile button dissappear if the user is not logged in
 - [ ] Check for cookies being stored on the frontend
 - [ ] Add profile icon in the navbar to sign out
+- [ ] Dark mode / Light mode switch
