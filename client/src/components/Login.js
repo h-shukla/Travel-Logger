@@ -5,8 +5,6 @@ import "../styles/Login.css";
 const Login = () => {
     const navigate = useNavigate();
 
-    const nameRef = useRef();
-    const confirmPassRef = useRef();
     const passRef = useRef();
     const emailRef = useRef();
 
@@ -16,18 +14,13 @@ const Login = () => {
 
     const handleOnSubmit = async (e) => {
         e.preventDefault();
-        if (passRef.current.value === confirmPassRef.current.value) {
-            const name = nameRef.current.value;
-            const email = emailRef.current.value;
-            const password = passRef.current.value;
-            const res = await postData(name, email, password);
-            if (res.success === true) {
-                navigate('/home');
-            } else {
-                alert('Some internal error occurred');
-            }
+        const email = emailRef.current.value;
+        const password = passRef.current.value;
+        const res = await postData(email, password);
+        if (res.success === true) {
+            navigate('/home');
         } else {
-            alert('Passwords do not match');
+            alert("Couldn't sign in!!! Some error occurred");
         }
         e.target.reset();
     };
@@ -39,7 +32,7 @@ const Login = () => {
         <div className='div-above'>
             <form className='signup-form' onSubmit={handleOnSubmit}>
                 <div className="mb-3">
-                    <label htmlFor="exampleInputEmail1" className="form-label">Enter your Email address:</label>
+                    <label htmlFor="exampleInputEmail1" className="form-label">Enter your Email:</label>
                     <input ref={emailRef} type="email" onChange={handleOnchange} name='' className="form-control" id="emailID" aria-describedby="emailHelp" placeholder='Enter a valid email' required />
                 </div>
                 <div className="mb-3">

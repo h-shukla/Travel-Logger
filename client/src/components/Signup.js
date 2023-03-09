@@ -45,7 +45,7 @@ const Signup = () => {
           <input ref={nameRef} type="text" onChange={handleOnchange} name='' className="form-control" id="nameID" placeholder='Minimum 4 characters' required />
         </div >
         <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">Enter your Email address:</label>
+          <label htmlFor="exampleInputEmail1" className="form-label">Enter your Email:</label>
           <input ref={emailRef} type="email" onChange={handleOnchange} name='' className="form-control" id="emailID" aria-describedby="emailHelp" placeholder='Enter a valid email' required />
           <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
         </div>
