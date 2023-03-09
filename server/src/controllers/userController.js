@@ -85,7 +85,7 @@ const logoutUser = (req, res, next) => {
     res.status(200).clearCookie("token").json({});
 };
 
-// get users --> Admin routes
+// get users --> Admin route
 const getUsers = catchAsyncErrors(async (req, res, next) => {
     const id = req.cookies.token;
     if (id) {

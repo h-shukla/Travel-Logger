@@ -3,5 +3,5 @@ const rmvDoubleQuotes = (string) => {
 };
 
 module.exports = {
-    rmvDoubleQuotes
+    rmvDoubleQuotes,
 };

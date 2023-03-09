@@ -6,6 +6,14 @@ const requiredString = {
     required: true,
 };
 
+/*
+  "name": "",
+  "description": "",
+  "user": "id",
+  "backgroundImgUrl": "",
+  "comments": ""
+ */
+
 const communitySchema = new Schema({
     name: requiredString,
     description: requiredString,
@@ -18,7 +26,7 @@ const communitySchema = new Schema({
         ref: "user",
     },
     backgroundImgUrl: requiredString,
-    comments: requiredString,
+    comments: [requiredString],
     members: {
         type: Number,
         default: 0

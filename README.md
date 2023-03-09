@@ -28,11 +28,12 @@
   - [x] Add communities array to user model
   - [x] Users will be able to add comments within a community
   - [x] Setup community routes and controllers
-  - [ ] Add CRUD functionality to the controllers
-  - [ ] Add authorization to the CRUD controllers so unauthorized users can't
+  - [x] Add CRUD functionality to the controllers
+  - [x] Add authorization to the CRUD controllers so unauthorized users can't
         access it
-  - [ ] Add user route to push a community to communities arrray if the user has
-        joined any community without changing rest of the user data
+  - [ ] Add CRUD to comments within a community
+  - [ ] Add user route to push a community to communities arrray of the user
+        when the user joins a community
 
 ## Frontend
 Api is not accessible so have to scrape from google maps. Instead of having

@@ -11,6 +11,7 @@ const {
 const router = express.Router();
 
 // admin routes
+// admin auth is in the controller as well
 router.get("/users", getUsers);
 
 // normal routes

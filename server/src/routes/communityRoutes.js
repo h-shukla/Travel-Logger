@@ -1,10 +1,12 @@
 const express = require("express");
-const { getAllComm, getMyComm, createComm } = require("../controllers/communityController"); 
+const { getAllComm, getMyComm, createComm, updateComm, deleteComm } = require("../controllers/communityController"); 
 
 const router = express.Router();
 
 router.get("/all", getAllComm);
-router.get("/my", getMyComm);
 router.post("/new", createComm);
+router.get("/my", getMyComm);
+router.put('/:id', updateComm).delete('/:id', deleteComm);
+
 
 module.exports = router;
