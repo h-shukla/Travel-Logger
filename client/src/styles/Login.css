@@ -15,7 +15,7 @@
 }
 
 .login-form {
-  background-color: #b8b8b8;
+  background-color: var(--Teal);
   padding: 3em;
   border-radius: 1em;
 }
@@ -32,8 +32,7 @@
 .form-control {
   padding: 0.5em;
   border-radius: 0.5em;
-  color: aliceblue;
-  background-color: #a3a3a3;
+  border: 0px;
 }
 
 .form-text {
@@ -50,11 +49,11 @@
 }
 
 .btn {
-  background-color: #e01d1d;
-  color: aliceblue;
-  padding: 0.5em;
+  background-color: var(--Purple);
+  color: #303030;
+  padding: 0.5em 1em;
   border-radius: 0.5em;
-  font-size: 1em;
+  font-size: 1.2em;
   border: 0px;
 }
 

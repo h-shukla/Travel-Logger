@@ -10,7 +10,7 @@
 }
 
 .link {
-  background-color: #e01d1d;
+  background-color: var(--Purple);
   padding: 0.5em;
   border-radius: 6%;
   text-decoration: none;
@@ -28,7 +28,7 @@ h3 {
 }
 
 .landing > .container {
-  background-color: rgba(20, 20, 20, 0.4);
+  background-color: rgba(65, 179, 163, 0.6);
   color: aliceblue;
   padding: 4rem;
 }

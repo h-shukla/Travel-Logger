@@ -1,5 +1,5 @@
 .home-container {
-  min-height: 100vh;
+  min-height: 85vh;
 }
 
 .new-log-container {
@@ -13,11 +13,20 @@
 .new-log {
   display: flex;
   flex-wrap: wrap;
-  max-width: 60vw;
+  max-width: 45vw;
   max-height: 30vh;
   padding: 1em;
   border-radius: 1em;
-  background-color: #b8b8b8;
+  background-color: var(--Teal);
+}
+
+.log-btn {
+  background-color: var(--Purple);
+  color: #303030;
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  font-size: 1.2em;
+  border: 0px;
 }
 
 .m-2 {
@@ -31,8 +40,8 @@
 .form-control-home {
   padding: 0.5em;
   border-radius: 0.5em;
-  background-color: #b8b8b8;
-  color: #404040;
+  background-color: var(--Teal);
+  color: #202020;
   border: 0px;
 }
 
@@ -45,11 +54,15 @@
 }
 
 .logs {
-  background-color: #b8b8b8;
+  background-color: var(--Teal);
   color: #131313;
   margin: 1em;
   padding: 1em;
   border-radius: 1em;
   max-width: 30vw;
   word-wrap: normal;
+}
+
+a {
+  color: #131313;
 }

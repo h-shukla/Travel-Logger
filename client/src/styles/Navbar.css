@@ -3,18 +3,19 @@
   align-items: center;
   justify-content: center;
   min-height: 15vh;
-  background-color: whitesmoke;
+  background-color: var(--Orange);
+  color: aliceblue;
 }
 
 .item {
   margin: 0.5em;
   padding: 0.5em;
   text-decoration: none;
+  color: #dddddd;
 }
 
 .item:hover {
-  /* font-size: 1.1em; */
-  background-color: #404040;
+  background-color: var(--Blue);
   color: aliceblue;
   border-radius: 6%;
   padding: 0.6em;
@@ -22,6 +23,7 @@
 }
 
 .icon {
+  color: #dddddd;
   font-size: 2rem;
   text-decoration: none;
   margin-right: 2em;

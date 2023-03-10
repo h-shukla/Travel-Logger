@@ -55,12 +55,40 @@ const Home = () => {
           </div>
         </div>
         <div className="btn-div">
-          <button type="submit" className="btn">
+          <button type="submit" className="log-btn">
             create
           </button>
         </div>
       </div>
       <div className="previous-logs">
+        <div className="logs">
+          <p>
+            <b>{data.title}</b>
+          </p>
+          <p>{data.comments}</p>
+          <a
+            href={data.link}
+            className="view-maps"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View on google maps
+          </a>
+        </div>
+        <div className="logs">
+          <p>
+            <b>{data.title}</b>
+          </p>
+          <p>{data.comments}</p>
+          <a
+            href={data.link}
+            className="view-maps"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View on google maps
+          </a>
+        </div>
         <div className="logs">
           <p>
             <b>{data.title}</b>

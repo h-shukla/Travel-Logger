@@ -9,14 +9,15 @@
 }
 
 .about > h3 {
-  background-color: #e01d1d;
+  background-color: var(--Purple);
+  color: aliceblue;
   padding: 0.5em;
   border-radius: 0.5em;
   font-size: larger;
 }
 
 .about > p {
-  background-color: #b8b8b8;
+  background-color: var(--Teal);
   color: #131313;
   padding: 3em;
   border-radius: 1em;

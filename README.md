@@ -47,6 +47,7 @@ Api is not accessible so have to scrape from google maps. Instead of having whol
 - [x] Make the basic about and contact pages
 - [x] Design the Home component with mock data for now
 - [x] Change the navbar and theme of the app
+- [ ] Add image url to the logs so images can be displayed
 - [ ] Design the Communities component
 - [ ] Implement the signup feature
 - [ ] Implement the login feature
