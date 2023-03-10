@@ -1,23 +1,23 @@
 .contact {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-left: 3em;
-    padding-right: 3em;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 3em;
+  padding-right: 3em;
+  min-height: 85vh;
 }
 
-.contact>h3 {
-    background-color: #e01d1d;
-    padding: .5em;
-    border-radius: .5em;
-    font-size: larger;
+.contact > h3 {
+  background-color: #e01d1d;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  font-size: larger;
 }
 
-.contact>p {
-    background-color: aliceblue;
-    color: #131313;
-    padding: 3em;
-    border-radius: 1em;
+.contact > p {
+  background-color: #b8b8b8;
+  color: #131313;
+  padding: 3em;
+  border-radius: 1em;
 }

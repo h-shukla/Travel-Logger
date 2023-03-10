@@ -1,23 +1,23 @@
 .about {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-left: 3em;
-    padding-right: 3em;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 3em;
+  padding-right: 3em;
+  min-height: 85vh;
 }
 
-.about>h3 {
-    background-color: #e01d1d;
-    padding: .5em;
-    border-radius: .5em;
-    font-size: larger;
+.about > h3 {
+  background-color: #e01d1d;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  font-size: larger;
 }
 
-.about>p {
-    background-color: aliceblue;
-    color: #131313;
-    padding: 3em;
-    border-radius: 1em;
+.about > p {
+  background-color: #b8b8b8;
+  color: #131313;
+  padding: 3em;
+  border-radius: 1em;
 }

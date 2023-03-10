@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const Communities = () => {
-    return (
-        <div>Communities</div>
-    )
-}
+  return <div>Communities</div>;
+};
 
-export default Communities
+export default Communities;

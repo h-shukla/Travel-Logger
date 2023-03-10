@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/Signup.css";
 
 // Required: name, username, email, password
@@ -11,9 +11,7 @@ const Signup = () => {
   const passRef = useRef();
   const emailRef = useRef();
 
-  const postData = async () => {
-
-  };
+  const postData = async () => {};
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
@@ -23,12 +21,12 @@ const Signup = () => {
       const password = passRef.current.value;
       const res = await postData(name, email, password);
       if (res.success === true) {
-        navigate('/home');
+        navigate("/home");
       } else {
-        alert('Some internal error occurred');
+        alert("Some internal error occurred");
       }
     } else {
-      alert('Passwords do not match');
+      alert("Passwords do not match");
     }
     e.target.reset();
   };
@@ -38,32 +36,81 @@ const Signup = () => {
   };
 
   return (
-    <div className='div-above'>
-      <form className='signup-form' onSubmit={handleOnSubmit}>
+    <div className="signup-div-above">
+      <form className="signup-form" onSubmit={handleOnSubmit}>
         <h2>Signup</h2>
         <div className="mb-3">
-          <label htmlFor="nameInput" className="form-label">Enter your name:</label>
-          <input ref={nameRef} type="text" onChange={handleOnchange} name='' className="form-control" id="nameID" placeholder='Minimum 4 characters' required />
-        </div >
-        <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">Enter your Email:</label>
-          <input ref={emailRef} type="email" onChange={handleOnchange} name='' className="form-control" id="emailID" aria-describedby="emailHelp" placeholder='Enter a valid email' required />
-          <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+          <label htmlFor="nameInput" className="form-label">
+            Enter your name:
+          </label>
+          <input
+            ref={nameRef}
+            type="text"
+            onChange={handleOnchange}
+            name=""
+            className="form-control"
+            id="nameID"
+            placeholder="Minimum 4 characters"
+            required
+          />
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">Enter Password:</label>
-          <input ref={passRef} type="password" onChange={handleOnchange} name='' className="form-control" id="passID" placeholder='minimum 8 characters' required />
-        </div >
+          <label htmlFor="exampleInputEmail1" className="form-label">
+            Enter your Email:
+          </label>
+          <input
+            ref={emailRef}
+            type="email"
+            onChange={handleOnchange}
+            name=""
+            className="form-control"
+            id="emailID"
+            aria-describedby="emailHelp"
+            placeholder="Enter a valid email"
+            required
+          />
+          <div id="emailHelp" className="form-text">
+            We'll never share your email with anyone else.
+          </div>
+        </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputPassword2" className="form-label">Confirm Password:</label>
-          <input ref={confirmPassRef} type="password" onChange={handleOnchange} name='' className="form-control" id="confirmPassID" placeholder='minimum 8 characters' required />
-        </div >
+          <label htmlFor="exampleInputPassword1" className="form-label">
+            Enter Password:
+          </label>
+          <input
+            ref={passRef}
+            type="password"
+            onChange={handleOnchange}
+            name=""
+            className="form-control"
+            id="passID"
+            placeholder="minimum 8 characters"
+            required
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="exampleInputPassword2" className="form-label">
+            Confirm Password:
+          </label>
+          <input
+            ref={confirmPassRef}
+            type="password"
+            onChange={handleOnchange}
+            name=""
+            className="form-control"
+            id="confirmPassID"
+            placeholder="minimum 8 characters"
+            required
+          />
+        </div>
         <div className="btn-div">
-          <button type="submit" className="btn">Submit</button>
+          <button type="submit" className="btn">
+            Submit
+          </button>
         </div>
-      </form >
+      </form>
     </div>
   );
 };
 
-export default Signup
+export default Signup;

@@ -1,11 +1,14 @@
 # Travel logger
+
 - Make list of your visited places and add it's comments
 - Look at what others have posted about that place as well
 - Have ability to either publish your travel log to everyone or keep it just foryourself as well
-- Dark mode & Light mode switch (very important)
+- Dark mode & Light mode switch (Default on Light mode)
 
 # TODO
+
 ## Backend
+
 - [x] Make logs model
 - [x] Make users model
 - [x] Link users model with logs model
@@ -32,7 +35,9 @@
   - [ ] Add user route to push a community to communities arrray of the when the user joins a community
 
 ## Frontend
+
 Api is not accessible so have to scrape from google maps. Instead of having whole window as map, Will have to put todo list like structure with place's google map clickable link. Just have to provide the right co-ordinates for it.
+
 - [x] Design Navbar to the side
 - [x] React router setup
 - [x] Make navbar functional
@@ -41,6 +46,7 @@ Api is not accessible so have to scrape from google maps. Instead of having whol
 - [x] Design the login component
 - [x] Make the basic about and contact pages
 - [x] Design the Home component with mock data for now
+- [x] Change the navbar and theme of the app
 - [ ] Design the Communities component
 - [ ] Implement the signup feature
 - [ ] Implement the login feature
