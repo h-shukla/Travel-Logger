@@ -1,8 +1,8 @@
 import React from "react";
 import "../styles/Home.css";
-import data from "./sample.json";
+import data from "./sample-logs.json";
 
-// have to make for-each loop to loop through logs
+// if title has space, have the map link replacing space with '+'
 const Home = () => {
   return (
     <div className="home-container">
@@ -13,7 +13,7 @@ const Home = () => {
             <label htmlFor="title">Title :</label>
             <input
               type="text"
-              placeholder="Enter title"
+              placeholder="Enter Location's name"
               className="form-control-home"
               required
             />
@@ -61,118 +61,23 @@ const Home = () => {
         </div>
       </div>
       <div className="previous-logs">
-        <div className="logs">
-          <p>
-            <b>{data.title}</b>
-          </p>
-          <p>{data.comments}</p>
-          <a
-            href={data.link}
-            className="view-maps"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View on google maps
-          </a>
-        </div>
-        <div className="logs">
-          <p>
-            <b>{data.title}</b>
-          </p>
-          <p>{data.comments}</p>
-          <a
-            href={data.link}
-            className="view-maps"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View on google maps
-          </a>
-        </div>
-        <div className="logs">
-          <p>
-            <b>{data.title}</b>
-          </p>
-          <p>{data.comments}</p>
-          <a
-            href={data.link}
-            className="view-maps"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View on google maps
-          </a>
-        </div>
-        <div className="logs">
-          <p>
-            <b>{data.title}</b>
-          </p>
-          <p>{data.comments}</p>
-          <a
-            href={data.link}
-            className="view-maps"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View on google maps
-          </a>
-        </div>
-        <div className="logs">
-          <p>
-            <b>{data.title}</b>
-          </p>
-          <p>{data.comments}</p>
-          <a
-            href={data.link}
-            className="view-maps"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View on google maps
-          </a>
-        </div>
-        <div className="logs">
-          <p>
-            <b>{data.title}</b>
-          </p>
-          <p>{data.comments}</p>
-          <a
-            href={data.link}
-            className="view-maps"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View on google maps
-          </a>
-        </div>
-        <div className="logs">
-          <p>
-            <b>{data.title}</b>
-          </p>
-          <p>{data.comments}</p>
-          <a
-            href={data.link}
-            className="view-maps"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View on google maps
-          </a>
-        </div>
-        <div className="logs">
-          <p>
-            <b>{data.title}</b>
-          </p>
-          <p>{data.comments}</p>
-          <a
-            href={data.link}
-            className="view-maps"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View on google maps
-          </a>
-        </div>
+        {data.map((m) => (
+          <div className="logs" key={m.id}>
+            <img src={m.urlToImage} alt="location's pic here" />
+            <p>
+              <b>{m.title}</b>
+            </p>
+            <p>{m.comments}</p>
+            <a
+              href={m.link}
+              className="view-maps"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View on google maps
+            </a>
+          </div>
+        ))}
       </div>
     </div>
   );

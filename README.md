@@ -32,7 +32,7 @@
   - [x] Add CRUD functionality to the controllers
   - [x] Add authorization to the CRUD controllers so unauthorized users can't access it
   - [ ] Add CRUD to comments within a community
-  - [ ] Add user route to push a community to communities arrray of the when the user joins a community
+  - [ ] Add user route to push add community to model array when user joins
 
 ## Frontend
 
@@ -47,8 +47,10 @@ Api is not accessible so have to scrape from google maps. Instead of having whol
 - [x] Make the basic about and contact pages
 - [x] Design the Home component with mock data for now
 - [x] Change the navbar and theme of the app
-- [ ] Add image url to the logs so images can be displayed
-- [ ] Design the Communities component
+- [x] Add image url to the logs so images can be displayed
+- [x] Design the Communities component
+- [x] Add background image like reddit has
+- [ ] Find and add a minimalist background image that can enhance the looks of the entire app
 - [ ] Implement the signup feature
 - [ ] Implement the login feature
 - [ ] Check for cookies being stored on the frontend

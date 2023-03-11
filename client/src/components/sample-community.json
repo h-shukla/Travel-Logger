@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Mumbai",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. In delectus quo animi, reprehenderit sunt facilis, minima maiores consectetur fuga sequi recusandae corrupti rem perferendis, nobis quod eligendi pariatur? Quasi veniam eos maxime ad?",
+    "user": "userid",
+    "backgroundImgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Fi90_ENVIAEBIqS.jpg/800px-Fi90_ENVIAEBIqS.jpg",
+    "members": 1,
+    "comments": ["alpha comment", "beta comment", "gamma comment"]
+  },
+  {
+    "id": 2,
+    "name": "Delhi",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. In delectus quo animi, reprehenderit sunt facilis, minima maiores consectetur fuga sequi recusandae corrupti rem perferendis, nobis quod eligendi pariatur? Quasi veniam eos maxime ad?",
+    "user": "userid",
+    "backgroundImgUrl": "https://www.travelandleisure.com/thmb/iAIrOVW7yWrDG8pZBpKMOvEGuNQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/new-delhi-india-NEWDELHITG0721-60d592e1603349298a0206d67d08582b.jpg",
+    "members": 1,
+    "comments": ["alpha comment", "beta comment", "gamma comment"]
+  },
+  {
+    "id": 3,
+    "name": "Kolkata",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. In delectus quo animi, reprehenderit sunt facilis, minima maiores consectetur fuga sequi recusandae corrupti rem perferendis, nobis quod eligendi pariatur? Quasi veniam eos maxime ad?",
+    "user": "userid",
+    "backgroundImgUrl": "https://www.india-briefing.com/news/wp-content/uploads/2013/11/Kolkata-City-Profile.jpg",
+    "members": 1,
+    "comments": ["alpha comment", "beta comment", "gamma comment"]
+  },
+  {
+    "id": 4,
+    "name": "Bangalore",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. In delectus quo animi, reprehenderit sunt facilis, minima maiores consectetur fuga sequi recusandae corrupti rem perferendis, nobis quod eligendi pariatur? Quasi veniam eos maxime ad?",
+    "user": "userid",
+    "backgroundImgUrl": "https://i.kinja-img.com/gawker-media/image/upload/c_fill,f_auto,fl_progressive,g_center,h_675,pg_1,q_80,w_1200/1432fedb88c0d1cc56f4c496a80f251c.jpg",
+    "members": 1,
+    "comments": ["alpha comment", "beta comment", "gamma comment"]
+  }
+]
