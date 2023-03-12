@@ -50,7 +50,7 @@ Api is not accessible so have to scrape from google maps. Instead of having whol
 - [x] Add image url to the logs so images can be displayed
 - [x] Design the Communities component
 - [x] Add background image like reddit has
-- [ ] Find and add a minimalist background image that can enhance the looks of the entire app
+- [x] Find and add a minimalist background image that can enhance the looks of the entire app
 - [ ] Implement the signup feature
 - [ ] Implement the login feature
 - [ ] Check for cookies being stored on the frontend

@@ -8,6 +8,8 @@
 .search-bar {
   padding: 1em;
   margin-right: 2em;
+  min-width: 30vw;
+  border-radius: 0.5em;
 }
 
 .community-container {
