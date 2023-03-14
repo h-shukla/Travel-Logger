@@ -3,15 +3,16 @@
   align-items: center;
   justify-content: center;
   min-height: 15vh;
-  background-color: var(--Purple);
-  color: aliceblue;
+  /* background-color: var(--Purple); */
+  background-color: rgba(0, 0, 0, 0);
+  color: #515050;
 }
 
 .item {
   margin: 0.5em;
   padding: 0.5em;
   text-decoration: none;
-  color: #dddddd;
+  color: #515050;
 }
 
 .item:hover {
@@ -23,8 +24,9 @@
 }
 
 .icon {
-  color: #dddddd;
+  color: #eeeeee;
   font-size: 2rem;
+  font-weight: bold;
   text-decoration: none;
   margin-right: 2em;
 }

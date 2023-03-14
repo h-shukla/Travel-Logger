@@ -15,12 +15,12 @@
 }
 
 .login-form {
-  background-color: var(--Teal);
+  background-color: var(--Blue);
   padding: 3em;
   border-radius: 1em;
 }
 
-.login-form > h2 {
+.login-form>h2 {
   color: #131313;
 }
 

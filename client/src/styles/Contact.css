@@ -8,7 +8,7 @@
   min-height: 85vh;
 }
 
-.contact > h3 {
+.contact>h3 {
   background-color: var(--Purple);
   color: aliceblue;
   padding: 0.5em;
@@ -16,8 +16,8 @@
   font-size: larger;
 }
 
-.contact > p {
-  background-color: var(--Teal);
+.contact>p {
+  background-color: var(--Blue);
   color: #131313;
   padding: 3em;
   border-radius: 1em;

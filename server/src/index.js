@@ -27,5 +27,25 @@ app.use("/api/v1/community", require("./routes/communityRoutes.js"));
 app.use(error);
 
 app.listen(port, () => {
-    console.log(`Backend listening on port ${port}`);
+  console.log(`Backend listening on port ${port}`);
 });
+
+/*
+Procedure while testing the backend
+Create admin account
+Create user account
+
+// logs
+Create logs from user account
+Check crud on logs
+
+// communities
+create community from a user account
+check crud on community
+make another user
+join the community created by the prev user
+add comments and check crud on comments
+
+// admin
+delete other users and/or commuities etc
+*/

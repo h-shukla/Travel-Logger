@@ -15,12 +15,12 @@
 }
 
 .signup-form {
-  background-color: var(--Teal);
+  background-color: var(--Blue);
   padding: 3em;
   border-radius: 1em;
 }
 
-.signup-form > h2 {
+.signup-form>h2 {
   color: #131313;
 }
 

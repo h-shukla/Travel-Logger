@@ -44,7 +44,7 @@ const createLog = catchAsyncErrors(async (req, res, next) => {
         const log = await Logs.create(completeLog);
         res.status(200).json({
             success: true,
-            message: "create log reached",
+            message: "Log created",
             log: log
         });
     } else {
@@ -64,7 +64,7 @@ const updateLog = catchAsyncErrors(async (req, res, next) => {
             success: true,
             message: "log updated",
             log: newLog
-        })
+        });
     } else {
         res.status(400).json({
             success: false,

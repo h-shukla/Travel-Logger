@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import "../styles/Profile.css";
 
 const Profile = () => {
-  return (
-    <div>Profile</div>
-  )
-}
+  return <div></div>;
+};
 
-export default Profile
+export default Profile;

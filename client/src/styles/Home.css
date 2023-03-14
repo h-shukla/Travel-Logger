@@ -16,10 +16,10 @@
   max-height: 30vh;
   padding: 1em;
   border-radius: 1em;
-  background-color: var(--Teal);
+  background-color: var(--Blue);
 }
 
-.new-log-container > h3 {
+.new-log-container>h3 {
   color: #eeeeee;
   font-size: 2em;
 }
@@ -37,14 +37,14 @@
   margin: 0.5em;
 }
 
-.m-2 > label {
+.m-2>label {
   margin-right: 1.5em;
 }
 
 .form-control-home {
   padding: 0.5em;
   border-radius: 0.5em;
-  background-color: var(--Teal);
+  background-color: var(--Blue);
   color: #202020;
   border: 0px;
 }
@@ -58,7 +58,7 @@
 }
 
 .logs {
-  background-color: var(--Teal);
+  background-color: var(--Blue);
   color: #131313;
   margin: 1em;
   padding: 1em;
@@ -71,7 +71,7 @@
   color: #131313;
 }
 
-.logs > img {
+.logs>img {
   margin-top: 1em;
   max-height: 22vh;
   max-width: 26vw;
