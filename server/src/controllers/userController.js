@@ -1,7 +1,9 @@
 const catchAsyncErrors = require("../middlewares/catchAsyncErrors");
 const Users = require("../models/Users");
 const { getToken, verifyToken } = require('../utils/tokenFunctions');
+const { rmvDoubleQuotes } = require("../utils/quickutils.js");
 
+// USER routes
 // register new user
 const register = catchAsyncErrors(async (req, res, next) => {
     const usr = req.body;
@@ -85,32 +87,6 @@ const logoutUser = (req, res, next) => {
     res.status(200).clearCookie("token").json({});
 };
 
-// get users --> Admin route
-const getUsers = catchAsyncErrors(async (req, res, next) => {
-    const id = req.cookies.token;
-    if (id) {
-        const vId = verifyToken(id);
-        const user = await Users.findById(JSON.parse(vId));
-        if (user.role === "admin") {
-            const users = await Users.find();
-            res.status(200).json({
-                success: true,
-                message: users,
-            });
-        } else {
-            res.status(404).json({
-                success: false,
-                message: "You are not authorized to access this url",
-            });
-        }
-    } else {
-        res.status(404).json({
-            success: false,
-            message: "Please log in first",
-        });
-    }
-});
-
 // update existing users
 const updateUser = catchAsyncErrors(async (req, res, next) => {
     const { name, email, username, password } = req.body;
@@ -147,11 +123,52 @@ const deleteUser = catchAsyncErrors(async (req, res, next) => {
             message: "User deleted",
         });
     } else {
-        res.status(200).json({
+        res.status(400).json({
             success: true,
             message: "Passwords do not match",
         });
     }
+});
+
+// ADMIN routes
+// get users --> Admin route
+const getUsers = catchAsyncErrors(async (req, res, next) => {
+    const id = req.cookies.token;
+    if (id) {
+        const vId = verifyToken(id);
+        const user = await Users.findById(JSON.parse(vId));
+        if (user.role === "admin") {
+            const users = await Users.find();
+            res.status(200).json({
+                success: true,
+                message: users,
+            });
+        } else {
+            res.status(404).json({
+                success: false,
+                message: "You are not authorized to access this url",
+            });
+        }
+    } else {
+        res.status(404).json({
+            success: false,
+            message: "Please log in first",
+        });
+    }
+});
+
+const adminDeleteUser = catchAsyncErrors(async(req, res, next) => {
+    const decodedToken = verifyToken(req.cookies.token);
+    if (!decodedToken) {
+        next();
+    } else {
+        const user = await Users.findById(rmvDoubleQuotes(decodedToken));
+        const userId = req.params.id;
+        await Users.findByIdAndDelete(userId);
+        res.status(200).json({
+            success: true,
+            message: "user deleted"
+        });}
 });
 
 module.exports = {
@@ -161,5 +178,6 @@ module.exports = {
     deleteUser,
     loginUser,
     logoutUser,
+    adminDeleteUser
 };
 

@@ -33,11 +33,12 @@
   - [x] Add authorization to the CRUD controllers so unauthorized users can't access it
   - [x] Add CRUD to comments within a community
   - [x] Add user route to push add community to model array when user joins
-- [ ] Add admin feature
-  - [ ] Ability to ban users
-  - [ ] Ability to ban communities
-  - [ ] Ability to access every community
-- [ ] Remove redundant try catch statements and add the error handling middleware to controllers
+- [x] Add admin feature
+  - [x] Ability to delete users
+  - [x] Ability to delete communities
+  - [x] Ability to access every community
+- [ ] OPTIONAL
+  - [ ] Remove redundant try catch statements and add the error handling middleware to controllers
 
 ## Frontend
 

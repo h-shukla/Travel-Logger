@@ -8,10 +8,14 @@ const {
   addCommentInCommunity,
   deleteCommentInCommunity,
   joinComm,
-  leaveComm,
+    leaveComm,
+    adminDeleteCommunity
 } = require("../controllers/communityController");
 
 const router = express.Router();
+
+// Admin routes
+router.delete("/admin/delete/:id", adminDeleteCommunity);
 
 // community routes
 router.get("/all", getAllComm);

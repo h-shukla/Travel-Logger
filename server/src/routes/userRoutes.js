@@ -6,6 +6,7 @@ const {
     deleteUser,
     loginUser,
     logoutUser,
+    adminDeleteUser
 } = require("../controllers/userController");
 
 const router = express.Router();
@@ -13,6 +14,7 @@ const router = express.Router();
 // admin routes
 // admin auth is in the controller as well
 router.get("/users", getUsers);
+router.delete("/admin/deleteuser/:id", adminDeleteUser);
 
 // normal routes
 router.post("/register", register);

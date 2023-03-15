@@ -143,7 +143,7 @@ const joinComm = catchAsyncErrors(async (req, res, next) => {
   }
 });
 
-const leaveComm = catchAsyncErrors(async (req, res) => {
+const leaveComm = catchAsyncErrors(async (req, res, next) => {
   const decodedToken = verifyToken(req.cookies.token);
   const community = await Community.findById({
     _id: req.body.commid,
@@ -162,7 +162,7 @@ const leaveComm = catchAsyncErrors(async (req, res) => {
   }
 });
 
-const addCommentInCommunity = catchAsyncErrors(async (req, res) => {
+const addCommentInCommunity = catchAsyncErrors(async (req, res, next) => {
   const decodedToken = verifyToken(req.cookies.token);
   const community = await Community.findById({
     _id: req.body.commid,
@@ -184,7 +184,7 @@ const addCommentInCommunity = catchAsyncErrors(async (req, res) => {
   }
 });
 
-const deleteCommentInCommunity = catchAsyncErrors(async (req, res) => {
+const deleteCommentInCommunity = catchAsyncErrors(async (req, res, next) => {
   const community = await Community.findById({
     _id: req.body.commid,
   });
@@ -201,6 +201,20 @@ const deleteCommentInCommunity = catchAsyncErrors(async (req, res) => {
   }
 });
 
+// ADMIN route
+const adminDeleteCommunity = catchAsyncErrors(async(req ,res, next) => {
+    const decodedToken = verifyToken(req.cookies.token);
+    const communityId = req.params.id;
+    if (!decodedToken || !communityId) {
+        next();
+    }
+    await Community.findByIdAndDelete(communityId);
+    res.status(200).json({
+        success: true,
+        message: "community deleted"
+    });
+});
+
 module.exports = {
   getAllComm,
   getMyCreatedComm,
@@ -211,4 +225,5 @@ module.exports = {
   leaveComm,
   addCommentInCommunity,
   deleteCommentInCommunity,
+    adminDeleteCommunity
 };
