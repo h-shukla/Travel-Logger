@@ -144,9 +144,6 @@ const joinComm = catchAsyncErrors(async (req, res, next) => {
 });
 
 const leaveComm = catchAsyncErrors(async (req, res) => {
-  // get user with cookies
-  // remove the community from communities array of user's model
-  // update the members in community number
   const decodedToken = verifyToken(req.cookies.token);
   const community = await Community.findById({
     _id: req.body.commid,
@@ -165,11 +162,44 @@ const leaveComm = catchAsyncErrors(async (req, res) => {
   }
 });
 
-const addCommentInCommunity = catchAsyncErrors(async (req, res) => {});
+const addCommentInCommunity = catchAsyncErrors(async (req, res) => {
+  const decodedToken = verifyToken(req.cookies.token);
+  const community = await Community.findById({
+    _id: req.body.commid,
+  });
+  if (!decodedToken || !community) {
+    next();
+  } else {
+    const user = await Users.findById(rmvDoubleQuotes(decodedToken));
+    await Community.findByIdAndUpdate(req.body.commid, {
+      $push: {
+        comments: { comment: req.body.comment, username: user.username },
+      },
+    });
 
-const updateCommentInCommunity = catchAsyncErrors(async (req, res) => {});
+    res.status(200).json({
+      success: true,
+      message: "comment added",
+    });
+  }
+});
 
-const deleteCommentInCommunity = catchAsyncErrors(async (req, res) => {});
+const deleteCommentInCommunity = catchAsyncErrors(async (req, res) => {
+  const community = await Community.findById({
+    _id: req.body.commid,
+  });
+  if (!community) {
+    next();
+  } else {
+    await Community.findByIdAndUpdate(req.body.commid, {
+      $pull: { comments: { _id: req.body.commentid } },
+    });
+    res.status(200).json({
+      success: true,
+      message: "comment deleted",
+    });
+  }
+});
 
 module.exports = {
   getAllComm,
@@ -180,6 +210,5 @@ module.exports = {
   joinComm,
   leaveComm,
   addCommentInCommunity,
-  updateCommentInCommunity,
   deleteCommentInCommunity,
 };

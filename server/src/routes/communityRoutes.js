@@ -7,7 +7,6 @@ const {
   deleteComm,
   addCommentInCommunity,
   deleteCommentInCommunity,
-  updateCommentInCommunity,
   joinComm,
   leaveComm,
 } = require("../controllers/communityController");
@@ -23,8 +22,6 @@ router.post("/join", joinComm).post("/leave", leaveComm);
 
 // Community comments routes
 router.post("/comments/new", addCommentInCommunity);
-router
-  .put("/comments/update", updateCommentInCommunity)
-  .delete("/comments/delete", deleteCommentInCommunity);
+router.delete("/comments/delete", deleteCommentInCommunity);
 
 module.exports = router;

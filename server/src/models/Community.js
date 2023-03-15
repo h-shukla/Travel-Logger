@@ -28,7 +28,12 @@ const communitySchema = new Schema({
     ref: "user",
   },
   backgroundImgUrl: requiredString,
-  comments: [requiredString],
+  comments: [
+    {
+      comment: requiredString,
+      username: requiredString,
+    },
+  ],
   members: {
     type: Number,
     default: 0,

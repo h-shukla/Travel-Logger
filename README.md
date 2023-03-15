@@ -31,8 +31,8 @@
   - [x] Setup community routes and controllers
   - [x] Add CRUD functionality to the controllers
   - [x] Add authorization to the CRUD controllers so unauthorized users can't access it
-  - [ ] Add CRUD to comments within a community
-  - [ ] Add user route to push add community to model array when user joins
+  - [x] Add CRUD to comments within a community
+  - [x] Add user route to push add community to model array when user joins
 - [ ] Add admin feature
   - [ ] Ability to ban users
   - [ ] Ability to ban communities
