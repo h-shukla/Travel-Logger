@@ -24,7 +24,7 @@
 - [x] Finish all user routes
 - [x] Finish all logs routes
 - [x] Refactor code
-- [ ] Add community feature
+- [x] Add community feature
   - [x] Community model
   - [x] Add communities array to user model
   - [x] Users will be able to add comments within a community
@@ -56,11 +56,11 @@ Api is not accessible so have to scrape from google maps. Instead of having whol
 - [x] Design the Communities component
 - [x] Add background image like reddit has
 - [x] Find and add a minimalist background image that can enhance the looks of the entire app
+- [x] Fix the community page's styling so image doesn't span out
+- [x] Check for cookies being stored on the frontend
 - [ ] Design the profile page
-- [ ] Fix the community page's styling so image doesn't span out
 - [ ] Implement the signup feature
 - [ ] Implement the login feature
-- [ ] Check for cookies being stored on the frontend
 - [ ] Implement the communities feature
   - [ ] call create and join comm simultaneously while creating new comm
 - [ ] Implement the Home feature by getting data from backend
@@ -69,4 +69,5 @@ Api is not accessible so have to scrape from google maps. Instead of having whol
 - [ ] Add profile icon in the navbar to sign out
 - [ ] Dark mode / Light mode switch
 - [ ] Add media queries to make mobile friendly
-- [ ] Add react-transistion group for smooth transistions
+- [ ] OPTIONAL
+  - [ ]Add react-transistion group for smooth transistions
