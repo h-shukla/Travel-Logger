@@ -42,7 +42,7 @@
 
 ## Frontend
 
-Api is not accessible so have to scrape from google maps. Instead of having whole window as map, Will have to put todo list like structure with place's google map clickable link. Just have to provide the right co-ordinates for it.
+Maps api is not available for free. Instead trying to do an ad-hoc solution for map usage this will make a generated link for accessing maps using the latitude and longitude but will open the map in another tab
 
 - [x] Design Navbar to the side
 - [x] React router setup
@@ -59,11 +59,11 @@ Api is not accessible so have to scrape from google maps. Instead of having whol
 - [x] Find and add a minimalist background image that can enhance the looks of the entire app
 - [x] Fix the community page's styling so image doesn't span out
 - [x] Check for cookies being stored on the frontend
-- [ ] Design the profile page
-- [ ] Implement the signup feature
-- [ ] Implement the login feature
+- [x] Design the profile page
+- [x] Implement the login feature
+- [x] Implement the signup feature
 - [ ] Implement the communities feature
-  - [ ] call create and join comm simultaneously while creating new comm
+  - [ ] call create and join community simultaneously while creating new community
 - [ ] Implement the Home feature by getting data from backend
 - [ ] Make login and signup button dissappear after user has logged in or signed up
 - [ ] Make the profile button dissappear if the user is not logged in

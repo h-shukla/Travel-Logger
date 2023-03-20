@@ -32,7 +32,7 @@ const register = catchAsyncErrors(async (req, res, next) => {
             },
         });
     } else {
-        res.status(400).json({
+        res.status(401).json({
             success: false,
             message: "passwords do not match",
             userDetails: "",
@@ -43,14 +43,14 @@ const register = catchAsyncErrors(async (req, res, next) => {
 // login existing users
 const loginUser = catchAsyncErrors(async (req, res, next) => {
     const { email, password } = req.body;
-    let user = await Users.findOne({ email });
+    const user = await Users.findOne({ email });
 
     if (user) {
         // for setting tokens with cookies
         const token = getToken(JSON.stringify(user._id));
         const decodedPass = verifyToken(user.password);
 
-        userDetails = {
+        const userDetails = {
             _id: user._id,
             name: user.name,
             username: user.username,
@@ -68,16 +68,15 @@ const loginUser = catchAsyncErrors(async (req, res, next) => {
                 userDetails: userDetails
             });
         } else {
-            res.status(400).json({
-                success: true,
-                message: "no user found or passwords do not match",
+            res.status(401).json({
+                success: false,
+                message: "Invalid email or password"
             });
         }
     } else {
-        res.status(400).json({
+        res.status(401).json({
             success: false,
-            message: "no user found or passwords do not match",
-            userDetails: "",
+            message: "Invalid email or password"
         });
     }
 });
@@ -103,8 +102,8 @@ const updateUser = catchAsyncErrors(async (req, res, next) => {
             message: "User Updated",
         });
     } else {
-        res.status(200).json({
-            success: true,
+        res.status(401).json({
+            success: false,
             message: "Passwords do not match",
         });
     }
@@ -123,7 +122,7 @@ const deleteUser = catchAsyncErrors(async (req, res, next) => {
             message: "User deleted",
         });
     } else {
-        res.status(400).json({
+        res.status(401).json({
             success: true,
             message: "Passwords do not match",
         });
