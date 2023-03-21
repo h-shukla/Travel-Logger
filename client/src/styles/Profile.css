@@ -17,6 +17,7 @@
 
 .btn-a {
   margin: 1em;
+  text-decoration: none;
 }
 
 .btn:hover {
