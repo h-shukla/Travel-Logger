@@ -187,7 +187,7 @@ const Home = () => {
                                 <p>
                                     <b>{m.title}</b>
                                 </p>
-                                <p>{m.comments}</p>
+                                <p>{m.comments.substring(0, 60)}...</p>
                                 <a
                                     href={m.link}
                                     className="view-maps"

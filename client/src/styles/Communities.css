@@ -28,6 +28,7 @@
 .link-item {
   max-width: 30vw;
   max-height: 40vh;
+  border-radius: 1em;
   justify-content: space-evenly;
   background-color: var(--Blue);
   margin: 2em;
@@ -60,4 +61,16 @@
   max-height: 40vh;
   margin-top: 3em;
   border: 5px solid aliceblue;
+}
+
+.comment-p {
+  background-color: var(--Blue);
+  border-radius: .5em;
+  padding: .5em;
+}
+
+.comment-div {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
 }
