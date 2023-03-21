@@ -94,22 +94,12 @@ const updateComm = catchAsyncErrors(async (req, res) => {
 
 const deleteComm = catchAsyncErrors(async (req, res) => {
     try {
-        const decodedToken = verifyToken(req.cookies.token);
-        const community = await Community.findById({
-            _id: req.params.id,
+        const community = await Community.findById(req.params.id);
+        await Community.findByIdAndDelete(community._id);
+        res.status(200).json({
+            success: true,
+            message: "Community deleted",
         });
-        if (JSON.stringify(community.user) === decodedToken) {
-            await Community.findByIdAndDelete(community._id);
-            res.status(200).json({
-                success: true,
-                message: "Community deleted",
-            });
-        } else {
-            res.status(400).json({
-                success: false,
-                message: "You do not have authorization for this request",
-            });
-        }
     } catch (e) {
         console.log(e);
         res.status(400).json({
@@ -120,7 +110,7 @@ const deleteComm = catchAsyncErrors(async (req, res) => {
 });
 
 const joinComm = catchAsyncErrors(async (req, res, next) => {
-    const decodedToken = verifyToken(req.cookies.token);
+    const decodedToken = verifyToken(req.body.token);
     const community = await Community.findById({
         _id: req.body.commid,
     });

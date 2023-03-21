@@ -1,17 +1,12 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
+import Cookies from "js-cookie";
 import axios from "axios";
 import "../styles/Communities.css";
 
-/*
-TODO: if a user has joined a particular community,
-make the add comment button and unhide it from him
-but don't show the button to the user who hasn't joined
-the community yet
-*/
-
 const Community = () => {
     const params = useParams();
+    const navigate = useNavigate();
 
     const commentRef = useRef();
     const user = JSON.parse(localStorage.getItem("user"));
@@ -76,6 +71,32 @@ const Community = () => {
         }
     };
 
+    const handleJoinCommunity = async () => {
+        const res = await axios.post(
+            `http://localhost:5000/api/v1/community/join/`,
+            {
+                token: Cookies.get("token"),
+                commid: community._id,
+            }
+        );
+        if (res.status === 200) {
+            alert("joined");
+            getData(params.commId);
+        }
+    };
+
+    const handleDeleteCommunity = async () => {
+        const res = await axios.delete(
+            `http://localhost:5000/api/v1/community/${community._id}`
+        );
+        if (res.status === 200) {
+            alert("community deleted");
+            navigate("/communities");
+        } else {
+            alert("some error occurred");
+        }
+    };
+
     useEffect(() => {
         getData(params.commId);
     }, [params.commId]);
@@ -83,6 +104,20 @@ const Community = () => {
     return (
         <div className="community-page">
             <img className="bg-img" src={community.backgroundImgUrl} alt="" />
+            {user._id !== community.user ? (
+                <button className="btn btn-a" onClick={handleJoinCommunity}>
+                    Join
+                </button>
+            ) : (
+                <></>
+            )}
+            {user._id === community.user ? (
+                <button className="btn btn-a" onClick={handleDeleteCommunity}>
+                    Delete Community
+                </button>
+            ) : (
+                <></>
+            )}
             <div className="content-sec">
                 <p>
                     <b>Name: </b> {community.name}

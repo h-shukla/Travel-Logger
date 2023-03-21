@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Cookies from "js-cookie";
 import "../styles/Communities.css";
 
 const Communities = () => {
@@ -43,6 +44,16 @@ const Communities = () => {
             );
             if (res.status === 200) {
                 alert("Community added");
+                const join = await axios.post(
+                    `http://localhost:5000/api/v1/community/join/`,
+                    {
+                        token: Cookies.get("token"),
+                        commid: res.data.community._id,
+                    }
+                );
+                if (join.status === 200) {
+                    console.log(join.data.success);
+                }
             } else {
                 alert("some error occurred");
             }
@@ -68,7 +79,7 @@ const Communities = () => {
     };
 
     useEffect(() => {
-        const data = localStorage.getItem("user");
+        const data = JSON.parse(localStorage.getItem("user"));
         if (data) {
             setUser(data);
             setIsLoggedIn(true);
