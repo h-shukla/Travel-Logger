@@ -5,8 +5,7 @@ const {
     updateUser,
     deleteUser,
     loginUser,
-    logoutUser,
-    adminDeleteUser
+    adminDeleteUser,
 } = require("../controllers/userController");
 
 const router = express.Router();
@@ -19,7 +18,6 @@ router.delete("/admin/deleteuser/:id", adminDeleteUser);
 // normal routes
 router.post("/register", register);
 router.post("/login", loginUser);
-router.get("/logout", logoutUser);
 router.put("/:id", updateUser);
 router.delete("/:id", deleteUser);
 

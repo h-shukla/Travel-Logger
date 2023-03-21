@@ -1,6 +1,6 @@
 const catchAsyncErrors = require("../middlewares/catchAsyncErrors");
 const Users = require("../models/Users");
-const { getToken, verifyToken } = require('../utils/tokenFunctions');
+const { getToken, verifyToken } = require("../utils/tokenFunctions");
 const { rmvDoubleQuotes } = require("../utils/quickutils.js");
 
 // USER routes
@@ -16,13 +16,9 @@ const register = catchAsyncErrors(async (req, res, next) => {
         delete usr["confirmPassword"];
         const user = await Users.create(usr);
 
-        // for setting tokens with cookies
         const token = getToken(JSON.stringify(user._id));
 
-        res.status(200).cookie('token', token, {
-            maxAge: 900000,
-            httpOnly: true
-        }).json({
+        res.status(200).json({
             success: true,
             message: "User Created",
             userDetails: {
@@ -30,6 +26,7 @@ const register = catchAsyncErrors(async (req, res, next) => {
                 email: user.email,
                 username: user.username,
             },
+            token: token,
         });
     } else {
         res.status(401).json({
@@ -46,7 +43,6 @@ const loginUser = catchAsyncErrors(async (req, res, next) => {
     const user = await Users.findOne({ email });
 
     if (user) {
-        // for setting tokens with cookies
         const token = getToken(JSON.stringify(user._id));
         const decodedPass = verifyToken(user.password);
 
@@ -55,36 +51,29 @@ const loginUser = catchAsyncErrors(async (req, res, next) => {
             name: user.name,
             username: user.username,
             email: user.email,
-            role: user.role
+            role: user.role,
         };
 
         if (decodedPass === password) {
-            res.status(200).cookie('token', token, {
-                maxAge: 900000,
-                httpOnly: true
-            }).json({
+            res.status(200).json({
                 success: true,
                 message: "user found",
-                userDetails: userDetails
+                userDetails: userDetails,
+                token: token,
             });
         } else {
             res.status(401).json({
                 success: false,
-                message: "Invalid email or password"
+                message: "Invalid email or password",
             });
         }
     } else {
         res.status(401).json({
             success: false,
-            message: "Invalid email or password"
+            message: "Invalid email or password",
         });
     }
 });
-
-const logoutUser = (req, res, next) => {
-    // clear the cookie that stores in logged in user information
-    res.status(200).clearCookie("token").json({});
-};
 
 // update existing users
 const updateUser = catchAsyncErrors(async (req, res, next) => {
@@ -156,7 +145,7 @@ const getUsers = catchAsyncErrors(async (req, res, next) => {
     }
 });
 
-const adminDeleteUser = catchAsyncErrors(async(req, res, next) => {
+const adminDeleteUser = catchAsyncErrors(async (req, res, next) => {
     const decodedToken = verifyToken(req.cookies.token);
     if (!decodedToken) {
         next();
@@ -166,8 +155,9 @@ const adminDeleteUser = catchAsyncErrors(async(req, res, next) => {
         await Users.findByIdAndDelete(userId);
         res.status(200).json({
             success: true,
-            message: "user deleted"
-        });}
+            message: "user deleted",
+        });
+    }
 });
 
 module.exports = {
@@ -176,7 +166,5 @@ module.exports = {
     updateUser,
     deleteUser,
     loginUser,
-    logoutUser,
-    adminDeleteUser
+    adminDeleteUser,
 };
-

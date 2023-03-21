@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 import "../styles/Login.css";
 
 const Login = () => {
@@ -10,28 +11,32 @@ const Login = () => {
 
     const postData = async (email, password) => {
         const res = await fetch("http://localhost:5000/api/v1/user/login", {
-            method: 'POST',
-            mode: 'cors',
+            method: "POST",
+            mode: "cors",
             headers: {
-                'Content-Type': 'application/json'
+                "Content-Type": "application/json",
             },
-            body: JSON.stringify({ email, password })
+            body: JSON.stringify({ email, password }),
         });
         return res.json();
     };
 
     const handleOnSubmit = async (e) => {
         e.preventDefault();
-        const res = await postData(emailRef.current.value, passRef.current.value);
+        const res = await postData(
+            emailRef.current.value,
+            passRef.current.value
+        );
         try {
             if (res.success === true) {
+                Cookies.set("token", res.token);
                 navigate("/home");
             } else {
-                alert('Invalid credintials');
+                alert("Invalid credintials");
                 e.target.reset();
             }
         } catch (err) {
-            alert('Invalid Credintials');
+            alert("Invalid Credintials");
         }
     };
 
@@ -41,45 +46,48 @@ const Login = () => {
 
     return (
         <div className="login-div-above">
-          <form className="login-form" onSubmit={handleOnSubmit}>
-            <h2>Login</h2>
-            <div className="mb-3">
-              <label htmlFor="exampleInputEmail1" className="form-label">
-                Enter your Email:
-              </label>
-              <input
-                ref={emailRef}
-                type="email"
-                onChange={handleOnchange}
-                name=""
-                className="form-control"
-                id="emailID"
-                aria-describedby="emailHelp"
-                placeholder="Enter a valid email"
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="exampleInputPassword1" className="form-label">
-                Enter Password:
-              </label>
-              <input
-                ref={passRef}
-                type="password"
-                onChange={handleOnchange}
-                name=""
-                className="form-control"
-                id="passID"
-                placeholder="minimum 8 characters"
-                required
-              />
-            </div>
-            <div className="btn-div">
-              <button type="submit" className="btn">
-                Submit
-              </button>
-            </div>
-          </form>
+            <form className="login-form" onSubmit={handleOnSubmit}>
+                <h2>Login</h2>
+                <div className="mb-3">
+                    <label htmlFor="exampleInputEmail1" className="form-label">
+                        Enter your Email:
+                    </label>
+                    <input
+                        ref={emailRef}
+                        type="email"
+                        onChange={handleOnchange}
+                        name=""
+                        className="form-control"
+                        id="emailID"
+                        aria-describedby="emailHelp"
+                        placeholder="Enter a valid email"
+                        required
+                    />
+                </div>
+                <div className="mb-3">
+                    <label
+                        htmlFor="exampleInputPassword1"
+                        className="form-label"
+                    >
+                        Enter Password:
+                    </label>
+                    <input
+                        ref={passRef}
+                        type="password"
+                        onChange={handleOnchange}
+                        name=""
+                        className="form-control"
+                        id="passID"
+                        placeholder="minimum 8 characters"
+                        required
+                    />
+                </div>
+                <div className="btn-div">
+                    <button type="submit" className="btn">
+                        Submit
+                    </button>
+                </div>
+            </form>
         </div>
     );
 };
