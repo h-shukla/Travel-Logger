@@ -13,19 +13,21 @@ const Profile = () => {
         role: "admin",
     });
 
-    const getUser = () => {
-        return 0;
-    };
-
     const handleLogout = () => {
         Cookies.remove("token");
+        localStorage.removeItem("user");
         alert("Logged out successfully");
         navigate("/");
     };
 
     useEffect(() => {
-        console.log(Cookies.get());
+        const user = localStorage.getItem("user");
+        const parsedUser = JSON.parse(user);
+        if (parsedUser !== null || parsedUser !== undefined) {
+            setUser(parsedUser);
+        }
     }, []);
+
     return (
         <div className="p-container">
             <div className="profile-container">

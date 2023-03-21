@@ -30,6 +30,7 @@ const Login = () => {
         try {
             if (res.success === true) {
                 Cookies.set("token", res.token);
+                localStorage.setItem("user", JSON.stringify(res.userDetails));
                 navigate("/home");
             } else {
                 alert("Invalid credintials");
