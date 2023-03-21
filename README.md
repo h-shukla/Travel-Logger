@@ -68,8 +68,8 @@ Maps api is not available for free. Instead trying to do an ad-hoc solution for 
 -   [x] Make login and signup button dissappear after user has logged in or signed up
 -   [x] Make the profile button dissappear if the user is not logged in
 -   [x] Implement the Home feature by getting data from backend
--   [ ] Implement the communities feature
-    -   [ ] call create and join community simultaneously while creating new community
+-   [x] Implement the communities feature
+    -   [x] call create and join community simultaneously while creating new community
 -   [ ] Design and Implement admin dashboard
 -   [ ] Dark mode / Light mode switch
 -   [ ] Add media queries to make mobile friendly
