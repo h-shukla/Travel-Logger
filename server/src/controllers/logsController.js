@@ -1,7 +1,7 @@
 const catchAsyncErrors = require("../middlewares/catchAsyncErrors");
 const Logs = require("../models/Logs.js");
-const { getToken, verifyToken } = require('../utils/tokenFunctions.js');
-const { rmvDoubleQuotes } = require('../utils/quickutils');
+const { verifyToken } = require("../utils/tokenFunctions.js");
+const { rmvDoubleQuotes } = require("../utils/quickutils");
 
 const getLogs = catchAsyncErrors(async (req, res, next) => {
     const logs = await Logs.find();
@@ -9,49 +9,42 @@ const getLogs = catchAsyncErrors(async (req, res, next) => {
         res.status(200).json({
             success: true,
             message: "get log reached",
-            Logs: logs
+            Logs: logs,
         });
     } else {
         res.status(400).json({
             success: false,
-            message: "no logs found"
+            message: "no logs found",
         });
     }
 });
 
 const getLogsForCurrentUser = catchAsyncErrors(async (req, res, next) => {
-    const userId = verifyToken(req.cookies.token);
-    if (userId != null) {
-        const logs = await Logs.find({ user: rmvDoubleQuotes(userId) });
+    const userId = req.params.id;
+    if (userId) {
+        const logs = await Logs.find({ user: userId });
         res.status(200).json({
             success: true,
             message: "get log for user reached",
-            userLogs: logs
+            userLogs: logs,
         });
     } else {
-        res.status(400).json({
-            success: false,
-            message: "User not logged in",
-        });
+        next();
     }
 });
 
 const createLog = catchAsyncErrors(async (req, res, next) => {
-    const token = req.cookies.token;
-    if (token != null) {
-        const userId = verifyToken(req.cookies.token);
-        const completeLog = { ...req.body, user: rmvDoubleQuotes(userId) };
+    const userId = req.params.userid;
+    if (userId) {
+        const completeLog = { ...req.body, user: userId };
         const log = await Logs.create(completeLog);
         res.status(200).json({
             success: true,
             message: "Log created",
-            log: log
+            log: log,
         });
     } else {
-        res.status(400).json({
-            success: false,
-            message: "User not logged in",
-        });
+        next();
     }
 });
 
@@ -63,20 +56,21 @@ const updateLog = catchAsyncErrors(async (req, res, next) => {
         res.status(200).json({
             success: true,
             message: "log updated",
-            log: newLog
+            log: newLog,
         });
     } else {
         res.status(400).json({
             success: false,
-            message: "No data provided in the body"
+            message: "No data provided in the body",
         });
     }
 });
 
 const deleteLog = catchAsyncErrors(async (req, res, next) => {
     const id = req.params.id;
-    const userId = verifyToken(req.cookies.token);
-    const currentLog = await Logs.findOneAndDelete({ _id: id, user: rmvDoubleQuotes(userId) });
+    const currentLog = await Logs.findOneAndDelete({
+        _id: id,
+    });
     if (currentLog) {
         res.status(200).json({
             success: true,
@@ -85,7 +79,7 @@ const deleteLog = catchAsyncErrors(async (req, res, next) => {
     } else {
         res.status(400).json({
             success: false,
-            message: "Some internal error occured"
+            message: "Some internal error occured",
         });
     }
 });
@@ -95,5 +89,5 @@ module.exports = {
     createLog,
     updateLog,
     deleteLog,
-    getLogsForCurrentUser
+    getLogsForCurrentUser,
 };

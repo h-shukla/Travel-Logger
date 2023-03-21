@@ -10,8 +10,8 @@ const {
 const router = express.Router();
 
 router.get("/logs", getLogs);
-router.get("/mylogs", getLogsForCurrentUser);
-router.post("/new", createLog);
+router.get("/mylogs/:id", getLogsForCurrentUser);
+router.post("/new/:userid", createLog);
 router.put("/:id", updateLog);
 router.delete("/:id", deleteLog);
 

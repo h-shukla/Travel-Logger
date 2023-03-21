@@ -64,12 +64,13 @@ Maps api is not available for free. Instead trying to do an ad-hoc solution for 
 -   [x] Implement the login feature
 -   [x] Implement the signup feature
 -   [x] Set cookies getting from response
--   [ ] Set user details on localstorage to access them later on
--   [ ] Make login and signup button dissappear after user has logged in or signed up
--   [ ] Make the profile button dissappear if the user is not logged in
--   [ ] Implement the Home feature by getting data from backend
+-   [x] Set user details on localstorage to access them later on
+-   [x] Make login and signup button dissappear after user has logged in or signed up
+-   [x] Make the profile button dissappear if the user is not logged in
+-   [x] Implement the Home feature by getting data from backend
 -   [ ] Implement the communities feature
     -   [ ] call create and join community simultaneously while creating new community
+-   [ ] Design and Implement admin dashboard
 -   [ ] Dark mode / Light mode switch
 -   [ ] Add media queries to make mobile friendly
 -   [ ] OPTIONAL
