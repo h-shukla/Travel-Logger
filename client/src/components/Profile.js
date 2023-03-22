@@ -22,6 +22,10 @@ const Profile = () => {
         navigate("/");
     };
 
+    const handleAdminOnClick = () => {
+        navigate("/admin");
+    };
+
     useEffect(() => {
         const user = localStorage.getItem("user");
         if (user !== null) {
@@ -48,7 +52,12 @@ const Profile = () => {
                     <button className="btn btn-a">Edit profile</button>
                     <button className="btn">Remove account</button>
                     {user.role === "admin" ? (
-                        <button className="btn btn-a">Admin dashboard</button>
+                        <button
+                            className="btn btn-a"
+                            onClick={handleAdminOnClick}
+                        >
+                            Admin dashboard
+                        </button>
                     ) : (
                         <p></p>
                     )}

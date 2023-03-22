@@ -12,8 +12,8 @@ const router = express.Router();
 
 // admin routes
 // admin auth is in the controller as well
-router.get("/users", getUsers);
-router.delete("/admin/deleteuser/:id", adminDeleteUser);
+router.get("/all/:token", getUsers);
+router.delete("/deleteuser/:token/:id", adminDeleteUser);
 
 // normal routes
 router.post("/register", register);

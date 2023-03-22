@@ -206,7 +206,7 @@ const getOneCommunity = async (req, res, next) => {
 
 // ADMIN route
 const adminDeleteCommunity = catchAsyncErrors(async (req, res, next) => {
-    const decodedToken = verifyToken(req.cookies.token);
+    const decodedToken = verifyToken(req.params.token);
     const communityId = req.params.id;
     if (!decodedToken || !communityId) {
         next();

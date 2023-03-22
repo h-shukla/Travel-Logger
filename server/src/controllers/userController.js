@@ -121,7 +121,7 @@ const deleteUser = catchAsyncErrors(async (req, res, next) => {
 // ADMIN routes
 // get users --> Admin route
 const getUsers = catchAsyncErrors(async (req, res, next) => {
-    const id = req.cookies.token;
+    const id = req.params.token;
     if (id) {
         const vId = verifyToken(id);
         const user = await Users.findById(JSON.parse(vId));
@@ -146,7 +146,7 @@ const getUsers = catchAsyncErrors(async (req, res, next) => {
 });
 
 const adminDeleteUser = catchAsyncErrors(async (req, res, next) => {
-    const decodedToken = verifyToken(req.cookies.token);
+    const decodedToken = verifyToken(req.params.token);
     if (!decodedToken) {
         next();
     } else {

@@ -16,7 +16,7 @@ const {
 const router = express.Router();
 
 // Admin routes
-router.delete("/admin/delete/:id", adminDeleteCommunity);
+router.delete("/admin/delete/:token/:id", adminDeleteCommunity);
 
 // community routes
 router.get("/all", getAllComm);

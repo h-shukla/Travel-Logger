@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.users {
+    background-color: var(--Blue);
+    margin-top: 3em;
+    margin-bottom: 3em;
+    border-radius: 1em;
+    padding: 2em;
+}
+
+.communities {
+    background-color: var(--Blue);
+    border-radius: 1em;
+    padding: 2em;
+}
+
+.users-map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
