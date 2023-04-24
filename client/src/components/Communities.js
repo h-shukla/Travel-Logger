@@ -136,14 +136,14 @@ const Communities = () => {
             ) : (
                 <></>
             )}
-            <div className="search">
+            {/* <div className="search">
                 <input
                     type="text"
                     className="search-bar"
                     placeholder="Search for communities"
                 />
                 <button className="btn">Search</button>
-            </div>
+            </div> */}
             <div className="community-list">
                 {communities.map((x) => (
                     <Link

@@ -70,7 +70,7 @@ Maps api is not available for free. Instead trying to do an ad-hoc solution for 
 -   [x] Implement the Home feature by getting data from backend
 -   [x] Implement the communities feature
     -   [x] call create and join community simultaneously while creating new community
--   [ ] Design and Implement admin dashboard
+-   [x] Design and Implement admin dashboard
 -   [ ] Dark mode / Light mode switch
 -   [ ] Add media queries to make mobile friendly
 -   [ ] OPTIONAL

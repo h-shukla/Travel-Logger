@@ -63,8 +63,8 @@ const Home = () => {
     const resetRefs = () => {
         titleRef.current.value = "";
         commentRef.current.value = "";
-        latRef.current.value = "";
-        lngRef.current.value = "";
+        // latRef.current.value = "";
+        // lngRef.current.value = "";
         dateRef.current.value = "";
         imgRef.current.value = "";
     };
@@ -72,11 +72,11 @@ const Home = () => {
     const handleOnClick = async () => {
         const title = titleRef.current.value;
         const comments = commentRef.current.value;
-        const latitude = latRef.current.value;
-        const longitude = lngRef.current.value;
+        // const latitude = latRef.current.value;
+        // const longitude = lngRef.current.value;
         const date = dateRef.current.value;
         const urlToImage = imgRef.current.value;
-        await postData(title, comments, latitude, longitude, date, urlToImage);
+        await postData(title, comments, 123, 124, date, urlToImage);
         getData();
         resetRefs();
     };
@@ -128,7 +128,7 @@ const Home = () => {
                                     required
                                 />
                             </div>
-                            <div className="m-2">
+                            {/* <div className="m-2">
                                 <label htmlFor="latitude">Latitude :</label>
                                 <input
                                     ref={latRef}
@@ -147,7 +147,7 @@ const Home = () => {
                                     className="form-control-home"
                                     required
                                 />
-                            </div>
+                            </div> */}
                             <div className="m-2">
                                 <label htmlFor="date">Date :</label>
                                 <input
@@ -189,7 +189,7 @@ const Home = () => {
                                 </p>
                                 <p>{m.comments.substring(0, 60)}...</p>
                                 <a
-                                    href={m.link}
+                                    href={`https://www.google.com/maps/place/${m.title}`}
                                     className="view-maps"
                                     target="_blank"
                                     rel="noopener noreferrer"
